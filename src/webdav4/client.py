@@ -363,7 +363,7 @@ class Client:
         It handles joining path correctly and checks for common http errors.
         """
         url = self.join_url(path, add_trailing_slash=add_trailing_slash)
-        http_resp = self.http.request(method, url, **kwargs)
+        http_resp = self.http.request(method, url, **kwargs, timeout=300.0)
 
         if http_resp.status_code == HTTPStatus.NOT_FOUND:
             raise ResourceNotFound(path)
